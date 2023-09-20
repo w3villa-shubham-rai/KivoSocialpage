@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:socialmedia_page/model/userstorymodel.dart';
-// Replace with the actual path to your UserStorymodel file
+
 
 class SocialMedaiaPage extends StatefulWidget {
   @override
@@ -57,9 +57,17 @@ class _SocialMedaiaPageState extends State<SocialMedaiaPage> {
                       itemCount: storylist.length,
                     ),
                   ),
-        
+
                   PostHereHeading(),
                   ShareThought(),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: Divider(
+                      indent: 60,                      
+                      endIndent: 60, 
+                      color: Color.fromARGB(255, 223, 221, 221),                   
+                    ),
+                  ),
                   UserPostContentSection()
                 ],
               ),
@@ -321,22 +329,32 @@ Widget ShareThought() {
   );
 }
 
-// social media main
-
+// social media main part start
 
 
 Widget UserPostContentSection() {
-  return Padding(
-    padding: const EdgeInsets.only(top: 25),
-    child: Container(
-      child:  Column(
+  return Container(
+    margin: EdgeInsets.only(top: 10),
+    decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Color(0xFFFFFFFF),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(227, 217, 217, 218),
+            blurRadius: 14.0,
+          )
+        ]),
+    child: Padding(
+      padding: const EdgeInsets.only(top: 20,bottom: 20,left: 15,right: 15),
+      child: Column(
         children: [
           Column(
-             children: [
+            children: [
               Row(
                 children: [
                   const CircleAvatar(
-                    backgroundImage: NetworkImage('https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
+                    backgroundImage: NetworkImage(
+                        'https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
                     radius: 20,
                   ),
                   const SizedBox(
@@ -345,36 +363,164 @@ Widget UserPostContentSection() {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Pratibha Singh",style: TextStyle(color: Color(0xFF19295C),fontSize: 15,fontWeight: FontWeight.w900),),
+                      const Text(
+                        "Pratibha Singh",
+                        style: TextStyle(
+                            color: Color(0xFF19295C),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900),
+                      ),
                       Row(
                         children: [
-                          SvgPicture.asset('assets/images/globe.svg',width: 10,height: 10,),
-                          SizedBox(width: 5,),
-                          Text('09:37 AM',style: TextStyle(color: Color(0xFFBABDC9),fontSize: 12),)
+                          SvgPicture.asset(
+                            'assets/images/globe.svg',
+                            width: 10,
+                            height: 10,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          const Text(
+                            '09:37 AM',
+                            style: TextStyle(
+                                color: Color(0xFFBABDC9), fontSize: 12),
+                          )
                         ],
                       )
                     ],
                   )
                 ],
               )
-             ],
+            ],
           ),
-           
           const Padding(
             padding: EdgeInsets.only(top: 15),
-            child: Text('Congratulations ﻿ Sandeep Tomer ﻿ for completing1 year in W3villa Technologies. We are thankful for your dedication and efforts toward this organization. We deeply acknowledge your hard work and contribution to W3villa. Happy Work Anniversary! ✨🙌 May you accomplish many more successful working years with the W3 Family! ✨🎉👏🎀',style: TextStyle(color: Color(0xFF444D6E),fontSize: 14),),
+            child: Text(
+              'Congratulations ﻿ Sandeep Tomer ﻿ for completing1 year in W3villa Technologies. We are thankful for your dedication and efforts toward this organization. We deeply acknowledge your hard work and contribution to W3villa. Happy Work Anniversary! ✨🙌 May you accomplish many more successful working years with the W3 Family! ✨🎉👏🎀',
+              style: TextStyle(color: Color(0xFF444D6E), fontSize: 14),
+            ),
           ),
-
-          Container(
-  height: 400,
-  width: double.infinity,
-  decoration: const BoxDecoration(
-    image: DecorationImage(
-        image: NetworkImage('https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
-        fit: BoxFit.cover),
-  ),
-          )
-
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 10),
+            child: Container(
+              height: 245,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
+                    fit: BoxFit.cover),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 252, 250, 250),
+                        borderRadius: BorderRadius.circular(18),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(224, 197, 197, 199),
+                            blurRadius: 9.0,
+                          )
+                        ]),
+                    child:Image.asset('assets/images/likeone.png',width: 4,height: 4,)
+                  ),
+                  SizedBox(
+                    width: 25,
+                  ),
+                  Container(
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 252, 250, 250),
+                        borderRadius: BorderRadius.circular(18),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(224, 197, 197, 199),
+                            blurRadius: 9.0,
+                          )
+                        ]),
+                    child:SvgPicture.asset( 'assets/images/comment.svg',fit: BoxFit.scaleDown, width: 10,height: 10,)
+                   
+                  ),
+                ],
+              ),
+              const SizedBox(
+                child: Text(
+                  '30 Comments . 5 Likes',
+                  style: TextStyle(
+                      color: Color(0xFF747EA0),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500),
+                ),
+              )
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 30),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
+                        radius: 15,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        children: [
+                          const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Rajan Tiwari',
+                                style: TextStyle(
+                                    color: Color(0xFF40518A),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w900),
+                              )),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFFF0F4FF),
+                              borderRadius: BorderRadius.circular(5)
+                            ),
+                            child: const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: EdgeInsets.all(3.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Happy Birthday @Sandeep Tomer',style:TextStyle(color: Color(0xFF000000),fontSize: 14,fontWeight: FontWeight.w700),),
+                                    Text('Thursday,13 jul 2023',style:TextStyle(color: Color(0xFF9F9F9F),fontSize: 12,fontWeight: FontWeight.w500),),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
         ],
       ),
     ),
