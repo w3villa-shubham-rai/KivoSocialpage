@@ -14,53 +14,55 @@ class _SocialMedaiaPageState extends State<SocialMedaiaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            child: Column(
-              children: [
-                // textpart of view all
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Upcoming Event",
-                        style: TextStyle(
-                            color: Color(0xFF000000),
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        "View All",
-                        style:
-                            TextStyle(color: Color(0xFF2E58E6), fontSize: 15),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 900,
-                  height: 122.0,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 5),
-                        child: UserStory(
-                          storyuser: storylist[index],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Container(
+              child: Column(
+                children: [
+                  // textpart of view all
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Upcoming Event",
+                          style: TextStyle(
+                              color: Color(0xFF000000),
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold),
                         ),
-                      );
-                    },
-                    itemCount: storylist.length,
+                        Text(
+                          "View All",
+                          style:
+                              TextStyle(color: Color(0xFF2E58E6), fontSize: 15),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-
-                PostHereHeading(),
-
-                ShareThought()
-              ],
+                  Container(
+                    width: 900,
+                    height: 122.0,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 5),
+                          child: UserStory(
+                            storyuser: storylist[index],
+                          ),
+                        );
+                      },
+                      itemCount: storylist.length,
+                    ),
+                  ),
+        
+                  PostHereHeading(),
+                  ShareThought(),
+                  UserPostContentSection()
+                ],
+              ),
             ),
           ),
         ),
@@ -110,7 +112,7 @@ Widget UserStory({required UserStorymodel storyuser}) {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   storyuser.storyusername,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xFF000000),
                       fontSize: 15,
                       fontWeight: FontWeight.w600),
@@ -120,7 +122,7 @@ Widget UserStory({required UserStorymodel storyuser}) {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   storyuser.storyocusionname,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color(0xFF8B8B8B),
                       fontSize: 12,
                       fontWeight: FontWeight.w500),
@@ -160,7 +162,7 @@ Widget UserStory({required UserStorymodel storyuser}) {
 
 Widget PostHereHeading() {
   return Padding(
-    padding: const EdgeInsets.only(top: 10, bottom: 20),
+    padding: const EdgeInsets.only(top: 10, bottom: 10),
     child: Column(
       children: [
         Row(
@@ -175,7 +177,7 @@ Widget PostHereHeading() {
                 flex: 4,
                 child: Container(
                   height: 30,
-                  child: Align(
+                  child: const Align(
                       alignment: Alignment.center,
                       child: Text(
                         'Post Here',
@@ -198,28 +200,183 @@ Widget PostHereHeading() {
 
 Widget ShareThought() {
   return Container(
-    child: const Column(
-      children: [
-        Row(
-          children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage('https://media.istockphoto.com/id/597958694/photo/young-adult-male-student-in-the-lobby-of-a-university.jpg?s=612x612&w=0&k=20&c=QaNEzmcKrLJzmwOcu2lgwm1B7rm3Ouq2McYYdmoMGpU='),
-              radius: 15,
-            ),
-            SizedBox(width: 10), 
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(      
-                  hintText: 'Share your thoughts...',
-                ),
-                
+    decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Color(0xFFFFFFFF),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(227, 217, 217, 218),
+            blurRadius: 14.0,
+          )
+        ]),
+    child: Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const CircleAvatar(
+                backgroundImage: NetworkImage(
+                    'https://media.istockphoto.com/id/597958694/photo/young-adult-male-student-in-the-lobby-of-a-university.jpg?s=612x612&w=0&k=20&c=QaNEzmcKrLJzmwOcu2lgwm1B7rm3Ouq2McYYdmoMGpU='),
+                radius: 15,
               ),
-            ),
-          ],
-        )
-      ],
+              SizedBox(width: 5),
+              Expanded(
+                child: Container(
+                  height: 43,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25.0),
+                    color: Color(0xFFF4F4F4),
+                  ),
+                  child: const TextField(
+                    textAlignVertical:
+                        TextAlignVertical.center, // Center the text vertically
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.person),
+                      border: InputBorder.none,
+                      hintText: 'Share a thought!',
+                      hintStyle: TextStyle(
+                        color: Color(0xFF797272),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      contentPadding: EdgeInsets.only(left: 15, bottom: 10),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                flex: 1,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Color(0xFFF8F9FA),
+                    ),
+                    height: 34,
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Photo/image',
+                        style:
+                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Color(0xFFF8F9FA),
+                    ),
+                    height: 34,
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Survey',
+                        style:
+                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Color(0xFFF8F9FA),
+                    ),
+                    height: 34,
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Feelings',
+                        style:
+                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     ),
   );
 }
 
+// social media main
 
+
+
+Widget UserPostContentSection() {
+  return Padding(
+    padding: const EdgeInsets.only(top: 25),
+    child: Container(
+      child:  Column(
+        children: [
+          Column(
+             children: [
+              Row(
+                children: [
+                  const CircleAvatar(
+                    backgroundImage: NetworkImage('https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
+                    radius: 20,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Pratibha Singh",style: TextStyle(color: Color(0xFF19295C),fontSize: 15,fontWeight: FontWeight.w900),),
+                      Row(
+                        children: [
+                          SvgPicture.asset('assets/images/globe.svg',width: 10,height: 10,),
+                          SizedBox(width: 5,),
+                          Text('09:37 AM',style: TextStyle(color: Color(0xFFBABDC9),fontSize: 12),)
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              )
+             ],
+          ),
+           
+          const Padding(
+            padding: EdgeInsets.only(top: 15),
+            child: Text('Congratulations ﻿ Sandeep Tomer ﻿ for completing1 year in W3villa Technologies. We are thankful for your dedication and efforts toward this organization. We deeply acknowledge your hard work and contribution to W3villa. Happy Work Anniversary! ✨🙌 May you accomplish many more successful working years with the W3 Family! ✨🎉👏🎀',style: TextStyle(color: Color(0xFF444D6E),fontSize: 14),),
+          ),
+
+          Container(
+  height: 400,
+  width: double.infinity,
+  decoration: const BoxDecoration(
+    image: DecorationImage(
+        image: NetworkImage('https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
+        fit: BoxFit.cover),
+  ),
+          )
+
+        ],
+      ),
+    ),
+  );
+}
