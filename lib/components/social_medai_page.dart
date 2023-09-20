@@ -84,11 +84,11 @@ Widget UserStory({required UserStorymodel storyuser}) {
     width: 150,
     height: 122.36,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      border: Border.all(color: Color(0xFF3658E6)),
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
+      border: Border.all(color: const Color(0xFF3658E6)),
     ),
     child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 14),
       child: Stack(
         children: [
           Column(
@@ -97,10 +97,10 @@ Widget UserStory({required UserStorymodel storyuser}) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 11),
+                    padding: const EdgeInsets.only(top: 11),
                     child: CircleAvatar(
                       radius: 30,
-                      backgroundColor: Color(0xFFE6AD2E),
+                      backgroundColor: const Color(0xFFE6AD2E),
                       child: CircleAvatar(
                         radius: 28,
                         backgroundImage: NetworkImage(storyuser.storyuserimage),
@@ -179,7 +179,7 @@ Widget PostHereHeading() {
                 flex: 2,
                 child: Container(
                   height: 1,
-                  color: Color.fromARGB(255, 219, 218, 218),
+                  color: const Color.fromARGB(255, 219, 218, 218),
                 )),
             Expanded(
                 flex: 4,
@@ -198,7 +198,7 @@ Widget PostHereHeading() {
             Expanded(
                 flex: 2,
                 child: Container(
-                    height: 1, color: Color.fromARGB(255, 219, 218, 218)))
+                    height: 1, color: const Color.fromARGB(255, 219, 218, 218)))
           ],
         )
       ],
@@ -228,21 +228,21 @@ Widget ShareThought() {
                     'https://media.istockphoto.com/id/597958694/photo/young-adult-male-student-in-the-lobby-of-a-university.jpg?s=612x612&w=0&k=20&c=QaNEzmcKrLJzmwOcu2lgwm1B7rm3Ouq2McYYdmoMGpU='),
                 radius: 15,
               ),
-              SizedBox(width: 5),
+              const SizedBox(width: 5),
               Expanded(
                 child: Container(
                   height: 43,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25.0),
-                    color: Color(0xFFF4F4F4),
+                    color: const Color(0xFFF4F4F4),
                   ),
                   child: const TextField(
-                    textAlignVertical:
-                        TextAlignVertical.center, // Center the text vertically
+                    textAlignVertical: TextAlignVertical.center, // Center the text vertically
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.person),
+                      suffixIcon: Text("😊",),
                       border: InputBorder.none,
                       hintText: 'Share a thought!',
+                      suffixIconConstraints: BoxConstraints.expand(width: 30, height: 25),
                       hintStyle: TextStyle(
                         color: Color(0xFF797272),
                         fontSize: 15,
@@ -253,75 +253,75 @@ Widget ShareThought() {
                   ),
                 ),
               ),
+
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                flex: 1,
-                child: TextButton(
-                  onPressed: () {},
+
+          /*Text("😊",),*/
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 1,
                   child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: Color(0xFFF8F9FA),
-                    ),
-                    height: 34,
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Photo/image',
-                        style:
-                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        color: Color(0xFFF8F9FA),
+                      ),
+                      height: 34,
+                      child:  const Center(
+                        child: Text(
+                          'Photo/image', textAlign: TextAlign.center,
+                          style:
+                              TextStyle(color: Color(0xFF444D6E), fontSize: 13.0, ),
+                        ),
                       ),
                     ),
-                  ),
+                  
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: TextButton(
-                  onPressed: () {},
+                const SizedBox(width: 5,),
+                Expanded(
+                  flex: 1,
                   child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: Color(0xFFF8F9FA),
-                    ),
-                    height: 34,
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Survey',
-                        style:
-                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        color: Color(0xFFF8F9FA),
+                      ),
+                      height: 34,
+                      child: const Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Survey',
+                          style:
+                              TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                        ),
                       ),
                     ),
-                  ),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: TextButton(
-                  onPressed: () {},
+                const SizedBox(width: 5,),
+                Expanded(
+                  flex: 1,
                   child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: Color(0xFFF8F9FA),
-                    ),
-                    height: 34,
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Feelings',
-                        style:
-                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        color: Color(0xFFF8F9FA),
+                      ),
+                      height: 34,
+                      child: const Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Feelings',
+                          style:
+                              TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
+                        ),
                       ),
                     ),
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),
@@ -334,7 +334,7 @@ Widget ShareThought() {
 
 Widget UserPostContentSection() {
   return Container(
-    margin: EdgeInsets.only(top: 10),
+    margin: const EdgeInsets.only(top: 10),
     decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Color(0xFFFFFFFF),
@@ -423,7 +423,7 @@ Widget UserPostContentSection() {
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 252, 250, 250),
+                        color: const Color.fromARGB(255, 252, 250, 250),
                         borderRadius: BorderRadius.circular(18),
                         boxShadow: const [
                           BoxShadow(
@@ -433,14 +433,14 @@ Widget UserPostContentSection() {
                         ]),
                     child:Image.asset('assets/images/likeone.png',width: 4,height: 4,)
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 25,
                   ),
                   Container(
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 252, 250, 250),
+                        color: const Color.fromARGB(255, 252, 250, 250),
                         borderRadius: BorderRadius.circular(18),
                         boxShadow: const [
                           BoxShadow(
@@ -465,7 +465,7 @@ Widget UserPostContentSection() {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 20),
             child: Column(
               children: [
                 Row(
@@ -496,7 +496,7 @@ Widget UserPostContentSection() {
                               )),
                           Container(
                             decoration: BoxDecoration(
-                              color: Color(0xFFF0F4FF),
+                              color: const Color(0xFFF0F4FF),
                               borderRadius: BorderRadius.circular(5)
                             ),
                             child: const Align(
