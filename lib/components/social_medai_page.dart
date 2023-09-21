@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:socialmedia_page/model/userpostmodel.dart';
 import 'package:socialmedia_page/model/userstorymodel.dart';
-
 
 class SocialMedaiaPage extends StatefulWidget {
   @override
@@ -63,12 +63,23 @@ class _SocialMedaiaPageState extends State<SocialMedaiaPage> {
                   const Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Divider(
-                      indent: 60,                      
-                      endIndent: 60, 
-                      color: Color.fromARGB(255, 223, 221, 221),                   
+                      indent: 60,
+                      endIndent: 60,
+                      color: Color.fromARGB(255, 223, 221, 221),
                     ),
                   ),
-                  UserPostContentSection()
+
+                  Container(
+                    width: 900,
+                    height: 500,
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return UserPostContentSection(
+                            userpostsection: userpostdetaillist[index]);
+                      },
+                      itemCount: userpostdetaillist.length,
+                    ),
+                  )
                 ],
               ),
             ),
@@ -237,12 +248,16 @@ Widget ShareThought() {
                     color: const Color(0xFFF4F4F4),
                   ),
                   child: const TextField(
-                    textAlignVertical: TextAlignVertical.center, // Center the text vertically
+                    textAlignVertical:
+                        TextAlignVertical.center, // Center the text vertically
                     decoration: InputDecoration(
-                      suffixIcon: Text("😊",),
+                      suffixIcon: Text(
+                        "😊",
+                      ),
                       border: InputBorder.none,
                       hintText: 'Share a thought!',
-                      suffixIconConstraints: BoxConstraints.expand(width: 30, height: 25),
+                      suffixIconConstraints:
+                          BoxConstraints.expand(width: 30, height: 25),
                       hintStyle: TextStyle(
                         color: Color(0xFF797272),
                         fontSize: 15,
@@ -253,7 +268,6 @@ Widget ShareThought() {
                   ),
                 ),
               ),
-
             ],
           ),
 
@@ -267,58 +281,64 @@ Widget ShareThought() {
                 Expanded(
                   flex: 1,
                   child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        color: Color(0xFFF8F9FA),
-                      ),
-                      height: 34,
-                      child:  const Center(
-                        child: Text(
-                          'Photo/image', textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: Color(0xFF444D6E), fontSize: 13.0, ),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Color(0xFFF8F9FA),
+                    ),
+                    height: 34,
+                    child: const Center(
+                      child: Text(
+                        'Photo/image',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFF444D6E),
+                          fontSize: 13.0,
                         ),
                       ),
                     ),
-                  
+                  ),
                 ),
-                const SizedBox(width: 5,),
+                const SizedBox(
+                  width: 5,
+                ),
                 Expanded(
                   flex: 1,
                   child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        color: Color(0xFFF8F9FA),
-                      ),
-                      height: 34,
-                      child: const Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Survey',
-                          style:
-                              TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
-                        ),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Color(0xFFF8F9FA),
+                    ),
+                    height: 34,
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Survey',
+                        style:
+                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
                       ),
                     ),
+                  ),
                 ),
-                const SizedBox(width: 5,),
+                const SizedBox(
+                  width: 5,
+                ),
                 Expanded(
                   flex: 1,
                   child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        color: Color(0xFFF8F9FA),
-                      ),
-                      height: 34,
-                      child: const Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Feelings',
-                          style:
-                              TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
-                        ),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Color(0xFFF8F9FA),
+                    ),
+                    height: 34,
+                    child: const Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Feelings',
+                        style:
+                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
                       ),
                     ),
+                  ),
                 ),
               ],
             ),
@@ -331,8 +351,7 @@ Widget ShareThought() {
 
 // social media main part start
 
-
-Widget UserPostContentSection() {
+Widget UserPostContentSection({required UserPostmodelDetail userpostsection}) {
   return Container(
     margin: const EdgeInsets.only(top: 10),
     decoration: const BoxDecoration(
@@ -345,16 +364,15 @@ Widget UserPostContentSection() {
           )
         ]),
     child: Padding(
-      padding: const EdgeInsets.only(top: 20,bottom: 20,left: 15,right: 15),
+      padding: const EdgeInsets.only(top: 20, bottom: 20, left: 15, right: 15),
       child: Column(
         children: [
           Column(
             children: [
               Row(
                 children: [
-                  const CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
+                  CircleAvatar(
+                    backgroundImage: AssetImage(userpostsection.userpostimg),
                     radius: 20,
                   ),
                   const SizedBox(
@@ -363,9 +381,9 @@ Widget UserPostContentSection() {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Pratibha Singh",
-                        style: TextStyle(
+                      Text(
+                        userpostsection.userpostname,
+                        style: const TextStyle(
                             color: Color(0xFF19295C),
                             fontSize: 15,
                             fontWeight: FontWeight.w900),
@@ -393,11 +411,13 @@ Widget UserPostContentSection() {
               )
             ],
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(top: 15),
-            child: Text(
-              'Congratulations ﻿ Sandeep Tomer ﻿ for completing1 year in W3villa Technologies. We are thankful for your dedication and efforts toward this organization. We deeply acknowledge your hard work and contribution to W3villa. Happy Work Anniversary! ✨🙌 May you accomplish many more successful working years with the W3 Family! ✨🎉👏🎀',
-              style: TextStyle(color: Color(0xFF444D6E), fontSize: 14),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                userpostsection.userpoststatusDescription,
+              ),
             ),
           ),
           Padding(
@@ -405,11 +425,10 @@ Widget UserPostContentSection() {
             child: Container(
               height: 245,
               width: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 image: DecorationImage(
-                    image: NetworkImage(
-                        'https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-250nw-1714666150.jpg'),
+                    image: AssetImage(userpostsection.usermainpostedimg),
                     fit: BoxFit.cover),
               ),
             ),
@@ -420,48 +439,55 @@ Widget UserPostContentSection() {
               Row(
                 children: [
                   Container(
-                    width: 36,
-                    height: 36,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 252, 250, 250),
-                        borderRadius: BorderRadius.circular(18),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(224, 197, 197, 199),
-                            blurRadius: 9.0,
-                          )
-                        ]),
-                    child:Image.asset('assets/images/likeone.png',width: 4,height: 4,)
-                  ),
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 252, 250, 250),
+                          borderRadius: BorderRadius.circular(18),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color.fromARGB(224, 197, 197, 199),
+                              blurRadius: 9.0,
+                            )
+                          ]),
+                      child: SvgPicture.asset(
+                        'assets/images/like.svg',
+                        fit: BoxFit.scaleDown,
+                        width: 10,
+                        height: 10,
+                      )),
                   const SizedBox(
                     width: 25,
                   ),
                   Container(
-                    width: 36,
-                    height: 36,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 252, 250, 250),
-                        borderRadius: BorderRadius.circular(18),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(224, 197, 197, 199),
-                            blurRadius: 9.0,
-                          )
-                        ]),
-                    child:SvgPicture.asset( 'assets/images/comment.svg',fit: BoxFit.scaleDown, width: 10,height: 10,)
-                   
-                  ),
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 252, 250, 250),
+                          borderRadius: BorderRadius.circular(18),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color.fromARGB(224, 197, 197, 199),
+                              blurRadius: 9.0,
+                            )
+                          ]),
+                      child: SvgPicture.asset(
+                        'assets/images/comment.svg',
+                        fit: BoxFit.scaleDown,
+                        width: 10,
+                        height: 10,
+                      )),
                 ],
               ),
-              const SizedBox(
-                child: Text(
-                  '30 Comments . 5 Likes',
-                  style: TextStyle(
-                      color: Color(0xFF747EA0),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500),
+              SizedBox(
+                  child: Text(
+                '${userpostsection.numberofcomments} Comments ${userpostsection.numberofLikes} Likes',
+                style: const TextStyle(
+                  color: Color(0xFF747EA0),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
                 ),
-              )
+              ))
             ],
           ),
           Padding(
@@ -496,9 +522,8 @@ Widget UserPostContentSection() {
                               )),
                           Container(
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF0F4FF),
-                              borderRadius: BorderRadius.circular(5)
-                            ),
+                                color: const Color(0xFFF0F4FF),
+                                borderRadius: BorderRadius.circular(5)),
                             child: const Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
@@ -506,8 +531,20 @@ Widget UserPostContentSection() {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Happy Birthday @Sandeep Tomer',style:TextStyle(color: Color(0xFF000000),fontSize: 14,fontWeight: FontWeight.w700),),
-                                    Text('Thursday,13 jul 2023',style:TextStyle(color: Color(0xFF9F9F9F),fontSize: 12,fontWeight: FontWeight.w500),),
+                                    Text(
+                                      'Happy Birthday @Sandeep Tomer',
+                                      style: TextStyle(
+                                          color: Color(0xFF000000),
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    Text(
+                                      'Thursday,13 jul 2023',
+                                      style: TextStyle(
+                                          color: Color(0xFF9F9F9F),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500),
+                                    ),
                                   ],
                                 ),
                               ),
