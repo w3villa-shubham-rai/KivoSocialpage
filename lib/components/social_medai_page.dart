@@ -114,7 +114,7 @@ Widget UserStory({required UserStorymodel storyuser}) {
                       backgroundColor: const Color(0xFFE6AD2E),
                       child: CircleAvatar(
                         radius: 28,
-                        backgroundImage: NetworkImage(storyuser.storyuserimage),
+                        backgroundImage: AssetImage(storyuser.storyuserimage),
                       ),
                     ),
                   ),

@@ -8,24 +8,32 @@ class UserStorymodel {
 }
 
 List<UserStorymodel> storylist = [
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel('assets/images/fb1.png', 'assets/images/birth.svg', 'shubham',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel(
+      'assets/images/fb2.png', 'assets/images/birth.svg', 'Ram', 'birthday'),
+  UserStorymodel('assets/images/fb1.png', 'assets/images/birth.svg', 'shubham',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel(
+      'assets/images/fb2.png', 'assets/images/birth.svg', 'Ram', 'birthday'),
+  UserStorymodel('assets/images/fb1.png', 'assets/images/birth.svg', 'shubham',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel(
+      'assets/images/fb2.png', 'assets/images/birth.svg', 'Shyam', 'birthday'),
+  UserStorymodel('assets/images/fb1.png', 'assets/images/birth.svg', 'shubham',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel('assets/images/fb2.png', 'assets/images/birth.svg', 'Himanshu',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel('assets/images/fb1.png', 'assets/images/birth.svg', 'shubham',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel(
+      'assets/images/fb2.png', 'assets/images/birth.svg', 'Mohan', 'birthday'),
+  UserStorymodel('assets/images/fb1.png', 'assets/images/birth.svg', 'shubham',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel(
+      'assets/images/fb2.png', 'assets/images/birth.svg', 'W3vila', 'birthday'),
+  UserStorymodel('assets/images/fb1.png', 'assets/images/birth.svg', 'shubham',
       'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
-      'birthday'),
-  UserStorymodel('assets/images/user.svg', 'assets/images/birth.svg', 'shubham',
+  UserStorymodel('assets/images/fb2.png', 'assets/images/birth.svg', 'Diwakar',
       'birthday'),
 ];
