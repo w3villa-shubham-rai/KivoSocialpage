@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:socialmedia_page/components/likecommentcoustombtn.dart';
+import 'package:socialmedia_page/components/sharethouthcoustombtn.dart';
 import 'package:socialmedia_page/model/userpostmodel.dart';
 import 'package:socialmedia_page/model/userstorymodel.dart';
 
+
 class SocialMedaiaPage extends StatefulWidget {
+  const SocialMedaiaPage({super.key});
   @override
   State<SocialMedaiaPage> createState() => _SocialMedaiaPageState();
 }
@@ -17,71 +20,70 @@ class _SocialMedaiaPageState extends State<SocialMedaiaPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              child: Column(
-                children: [
-                  // textpart of view all
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Upcoming Event",
-                          style: TextStyle(
-                              color: Color(0xFF000000),
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold),
+            child: Column(
+              children: [
+                // textpart of view all
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Upcoming Event",
+                        style: TextStyle(
+                            color: Color(0xFF000000),
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "View All",
+                        style:
+                            TextStyle(color: Color(0xFF2E58E6), fontSize: 15),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 900,
+                  height: 122.0,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 5),
+                        child: UserStory(
+                          storyuser: storylist[index],
                         ),
-                        Text(
-                          "View All",
-                          style:
-                              TextStyle(color: Color(0xFF2E58E6), fontSize: 15),
-                        ),
-                      ],
-                    ),
+                      );
+                    },
+                    itemCount: storylist.length,
                   ),
-                  Container(
-                    width: 900,
-                    height: 122.0,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: UserStory(
-                            storyuser: storylist[index],
-                          ),
-                        );
-                      },
-                      itemCount: storylist.length,
-                    ),
-                  ),
+                ),
 
-                  PostHereHeading(),
-                  ShareThought(),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10),
-                    child: Divider(
-                      indent: 60,
-                      endIndent: 60,
-                      color: Color.fromARGB(255, 223, 221, 221),
-                    ),
+                PostHereHeading(),
+                ShareThought(),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Divider(
+                    indent: 60,
+                    endIndent: 60,
+                    color: Color.fromARGB(255, 223, 221, 221),
                   ),
+                ),
 
-                  Container(
-                    width: 900,
-                    height: 500,
-                    child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        return UserPostContentSection(
-                            userpostsection: userpostdetaillist[index]);
-                      },
-                      itemCount: userpostdetaillist.length,
-                    ),
-                  )
-                ],
-              ),
+                SizedBox(
+                  width: 900,
+                  height: 500,
+                  child: ListView.builder(
+                    // physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return UserPostContentSection(
+                          userpostsection: userpostdetaillist[index]);
+                    },
+                    itemCount: userpostdetaillist.length,
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -90,6 +92,7 @@ class _SocialMedaiaPageState extends State<SocialMedaiaPage> {
   }
 }
 
+// ignore: non_constant_identifier_names
 Widget UserStory({required UserStorymodel storyuser}) {
   return Container(
     width: 150,
@@ -123,7 +126,7 @@ Widget UserStory({required UserStorymodel storyuser}) {
                     child: SizedBox(
                         height: 25,
                         width: 25,
-                        child: SvgPicture.asset(storyuser.storyocusionimage)),
+                        child: SvgPicture.asset(storyuser.storyocusionimage)), 
                   )
                 ],
               ),
@@ -179,6 +182,7 @@ Widget UserStory({required UserStorymodel storyuser}) {
 
 // post here section Start
 
+// ignore: non_constant_identifier_names
 Widget PostHereHeading() {
   return Padding(
     padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -192,11 +196,11 @@ Widget PostHereHeading() {
                   height: 1,
                   color: const Color.fromARGB(255, 219, 218, 218),
                 )),
-            Expanded(
+            const Expanded(
                 flex: 4,
-                child: Container(
+                child: SizedBox(
                   height: 30,
-                  child: const Align(
+                  child: Align(
                       alignment: Alignment.center,
                       child: Text(
                         'Post Here',
@@ -207,9 +211,9 @@ Widget PostHereHeading() {
                       )),
                 )),
             Expanded(
-                flex: 2,
+                flex: 2, 
                 child: Container(
-                    height: 1, color: const Color.fromARGB(255, 219, 218, 218)))
+                    height: 1, color: const Color.fromARGB(255, 219, 218, 218))) 
           ],
         )
       ],
@@ -217,6 +221,7 @@ Widget PostHereHeading() {
   );
 }
 
+// ignore: non_constant_identifier_names
 Widget ShareThought() {
   return Container(
     decoration: const BoxDecoration(
@@ -271,75 +276,31 @@ Widget ShareThought() {
             ],
           ),
 
-          /*Text("😊",),*/
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
+          const Padding(
+            padding: EdgeInsets.only(top: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   flex: 1,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: Color(0xFFF8F9FA),
-                    ),
-                    height: 34,
-                    child: const Center(
-                      child: Text(
-                        'Photo/image',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF444D6E),
-                          fontSize: 13.0,
-                        ),
-                      ),
-                    ),
-                  ),
+                  child:sharethoughtbtn(btnname: 'Photo/image'),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 5,
                 ),
                 Expanded(
                   flex: 1,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: Color(0xFFF8F9FA),
-                    ),
-                    height: 34,
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Survey',
-                        style:
-                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
-                      ),
-                    ),
-                  ),
+                  child:sharethoughtbtn(btnname: 'Survey'),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 5,
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: Color(0xFFF8F9FA),
-                    ),
-                    height: 34,
-                    child: const Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Feelings',
-                        style:
-                            TextStyle(color: Color(0xFF444D6E), fontSize: 13.0),
-                      ),
-                    ),
-                  ),
-                ),
+              Expanded(
+              flex: 1,
+              child: sharethoughtbtn(btnname: 'Feelings')
+              ),
+
               ],
             ),
           )
@@ -351,6 +312,7 @@ Widget ShareThought() {
 
 // social media main part start
 
+// ignore: non_constant_identifier_names
 Widget UserPostContentSection({required UserPostmodelDetail userpostsection}) {
   return Container(
     margin: const EdgeInsets.only(top: 10),
@@ -412,7 +374,7 @@ Widget UserPostContentSection({required UserPostmodelDetail userpostsection}) {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -426,57 +388,23 @@ Widget UserPostContentSection({required UserPostmodelDetail userpostsection}) {
               height: 245,
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
                 image: DecorationImage(
                     image: AssetImage(userpostsection.usermainpostedimg),
-                    fit: BoxFit.cover),
+                    fit: BoxFit.fill),
               ),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+               const Row(
                 children: [
-                  Container(
-                      width: 36,
-                      height: 36,
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 252, 250, 250),
-                          borderRadius: BorderRadius.circular(18),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(224, 197, 197, 199),
-                              blurRadius: 9.0,
-                            )
-                          ]),
-                      child: SvgPicture.asset(
-                        'assets/images/like.svg',
-                        fit: BoxFit.scaleDown,
-                        width: 10,
-                        height: 10,
-                      )),
-                  const SizedBox(
+                  likecommentcoustombtn(  likecommentlogoPath: 'assets/images/like.svg',),
+                  SizedBox(
                     width: 25,
                   ),
-                  Container(
-                      width: 36,
-                      height: 36,
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 252, 250, 250),
-                          borderRadius: BorderRadius.circular(18),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(224, 197, 197, 199),
-                              blurRadius: 9.0,
-                            )
-                          ]),
-                      child: SvgPicture.asset(
-                        'assets/images/comment.svg',
-                        fit: BoxFit.scaleDown,
-                        width: 10,
-                        height: 10,
-                      )),
+                  likecommentcoustombtn(  likecommentlogoPath: 'assets/images/comment.svg',),
                 ],
               ),
               SizedBox(
